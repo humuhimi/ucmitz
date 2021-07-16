@@ -1,0 +1,109 @@
+<?php
+/**
+ * baserCMS :  Based Website Development Project <https://basercms.net>
+ * Copyright (c) baserCMS User Community <https://basercms.net/community/>
+ *
+ * @copyright     Copyright (c) baserCMS User Community
+ * @link          https://basercms.net baserCMS Project
+ * @since         5.0.0
+ * @license       http://basercms.net/license/index.html MIT License
+ */
+
+namespace BaserCore\Service;
+
+use BaserCore\Model\Entity\Content;
+use BaserCore\Model\Table\ContentsTable;
+use Cake\Core\Configure;
+use Cake\Core\Exception\Exception;
+use Cake\ORM\Query;
+use Cake\ORM\TableRegistry;
+use Cake\Datasource\EntityInterface;
+use BaserCore\Annotation\UnitTest;
+use BaserCore\Annotation\NoTodo;
+use BaserCore\Annotation\Checked;
+
+/**
+ * Class ContentsService
+ * @package BaserCore\Service
+ * @property ContentsTable $Contents
+ */
+class ContentsService implements ContentsServiceInterface
+{
+
+    /**
+     * Contents Table
+     * @var \Cake\ORM\Table
+     */
+    public $Contents;
+
+    /**
+     * ContentsService constructor.
+     */
+    public function __construct()
+    {
+        $this->Contents = TableRegistry::getTableLocator()->get('BaserCore.Contents');
+    }
+
+    /**
+     * ユーザーの新規データ用の初期値を含んだエンティティを取得する
+     * @return Content
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function getNew(): Content;
+
+
+    /**
+     * ユーザーを取得する
+     * @param int $id
+     * @return EntityInterface
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function get($id): EntityInterface;
+
+    /**
+     * ユーザー管理の一覧用のデータを取得
+     * @param array $queryParams
+     * @return Query
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function getIndex(array $queryParams): Query
+
+
+    /**
+     * ユーザー登録
+     * @param array $data
+     * @return \Cake\Datasource\EntityInterface
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function create(array $postData): EntityInterface
+    /**
+     * ユーザー情報を更新する
+     * @param EntityInterface $target
+     * @param array $postData
+     * @return EntityInterface
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function update(EntityInterface $target, array $postData);
+
+    /**
+     * ユーザー情報を削除する
+     * 最後のシステム管理者でなければ削除
+     * @param int $id
+     * @return bool
+     * @checked
+     * @noTodo
+     * @unitTest
+     */
+    public function delete($id)
+}
+
